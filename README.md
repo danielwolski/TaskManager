@@ -1,2 +1,0 @@
-# CalendarApp
-Calendar app backend
