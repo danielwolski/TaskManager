@@ -22,5 +22,6 @@ public interface EventMapper {
     List<Event> eventRestListToEventList(List<RestEvent> eventRestList);
     List<RestEvent> eventListToEventRestList(List<Event> eventList);
     
-    RestEventDetails eventToEventDetails(Event eventDetails);
+    RestEventDetails eventToEventDetails(Event event);
+    List<RestEventDetails> eventListToRestEventDetailsList(List<Event> events);
 }

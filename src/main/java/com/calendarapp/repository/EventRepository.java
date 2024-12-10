@@ -1,5 +1,8 @@
 package com.calendarapp.repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,6 +72,28 @@ public class EventRepository {
         } catch (Exception e) {
             log.error("Error getting event details: ", e);
             return null;
+        }
+    }
+
+    public List<Event> getEventsByDay(LocalDate date) {
+        try {
+            LocalDateTime startOfDay = date.atStartOfDay();
+            LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
+            
+            String sql = "SELECT * FROM events WHERE start_time >= ? AND start_time <= ?";
+            return jdbcTemplate.query(sql, (rs, rowNum) -> {
+                Event event = new Event();
+                event.setId(rs.getLong("id"));
+                event.setTitle(rs.getString("title"));
+                event.setStartTime(rs.getTimestamp("start_time").toLocalDateTime());
+                event.setEndTime(rs.getTimestamp("end_time").toLocalDateTime());
+                event.setDescription(rs.getString("description"));
+                return event;
+            }, startOfDay, endOfDay);
+
+        } catch (Exception e) {
+            log.error("Error fetching events for day: " + date, e);
+            return Collections.emptyList();
         }
     }
 

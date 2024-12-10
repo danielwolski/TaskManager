@@ -1,5 +1,7 @@
 package com.calendarapp.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -45,6 +47,10 @@ public class EventService {
 
     public RestEventDetails getEventDetails(Long id) {
         return eventMapper.eventToEventDetails(eventRepository.getEventDetails(id));
+    }
+
+    public List<RestEventDetails> getEventDetailsByDay(LocalDate date) {
+        return eventMapper.eventListToRestEventDetailsList(eventRepository.getEventsByDay(date));
     }
     
 }
