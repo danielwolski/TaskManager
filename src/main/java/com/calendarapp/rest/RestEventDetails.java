@@ -7,7 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RestCreateEvent {
+public class RestEventDetails {
+    private Long id;
     private String title;
     private LocalDateTime startTime;
     private LocalDateTime endTime;

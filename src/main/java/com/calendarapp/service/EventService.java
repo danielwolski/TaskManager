@@ -9,6 +9,7 @@ import com.calendarapp.model.Event;
 import com.calendarapp.repository.EventRepository;
 import com.calendarapp.rest.RestCreateEvent;
 import com.calendarapp.rest.RestEvent;
+import com.calendarapp.rest.RestEventDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,10 @@ public class EventService {
     public void updateEvent(RestEvent restEvent) {
         Event event = eventMapper.eventRestToEvent(restEvent);
         eventRepository.updateEvent(event);
+    }
+
+    public RestEventDetails getEventDetails(Long id) {
+        return eventMapper.eventToEventDetails(eventRepository.getEventDetails(id));
     }
     
 }

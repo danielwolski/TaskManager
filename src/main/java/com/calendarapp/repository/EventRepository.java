@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +24,8 @@ public class EventRepository {
     @Transactional
     public Event save(Event event) {
         try {
-            String sql = "INSERT INTO events (title, start_time, end_time) VALUES (?, ?, ?)";
-            jdbcTemplate.update(sql, event.getTitle(), event.getStartTime(), event.getEndTime());
+            String sql = "INSERT INTO events (title, start_time, end_time, description) VALUES (?, ?, ?, ?)";
+            jdbcTemplate.update(sql, event.getTitle(), event.getStartTime(), event.getEndTime(), event.getDescription());
             log.info("Event saved successfully: {}", event);
         } catch (Exception e) {
             log.error("Error saving event: ", e);
@@ -50,6 +51,27 @@ public class EventRepository {
         }
     }
 
+    public Event getEventDetails(Long id) { 
+    try {
+        String sql = "SELECT * FROM events WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
+            Event event = new Event();
+            event.setId(rs.getLong("id"));
+            event.setTitle(rs.getString("title"));
+            event.setStartTime(rs.getTimestamp("start_time").toLocalDateTime());
+            event.setEndTime(rs.getTimestamp("end_time").toLocalDateTime());
+            event.setDescription(rs.getString("description"));
+            return event;
+        }, id); 
+        } catch (EmptyResultDataAccessException e) {
+            log.warn("Event not found for id: " + id, e);
+            return null;
+        } catch (Exception e) {
+            log.error("Error getting event details: ", e);
+            return null;
+        }
+    }
+
     public void deleteById(Long id) {
         try {
             String sql = "DELETE FROM events WHERE id = ?";
@@ -67,25 +89,25 @@ public class EventRepository {
 
     public void updateEvent(Event event) {
     try {
-        String sql = "UPDATE events SET title = ?, start_time = ?, end_time = ? WHERE id = ?";
+        String sql = "UPDATE events SET title = ?, start_time = ?, end_time = ?, description = ? WHERE id = ?";
         
         int rowsAffected = jdbcTemplate.update(sql, 
             event.getTitle(), 
             event.getStartTime(),
             event.getEndTime(),
+            event.getDescription(),
             event.getId()
         );
 
         if (rowsAffected == 0) {
             throw new EventNotFoundException("No event found with id: " + event.getId());
         }
-
         log.info("Event with id " + event.getId() + " successfully updated.");
-    } catch (EventNotFoundException e) {
-        throw e;
-    } catch (Exception e) {
-        log.error("Error updating event with id: " + event.getId(), e);
-        throw new RuntimeException("Error updating event", e);
+        } catch (EventNotFoundException e) {
+            throw e;
+        } catch (Exception e) {
+            log.error("Error updating event with id: " + event.getId(), e);
+            throw new RuntimeException("Error updating event", e);
+        }
     }
-}
 }

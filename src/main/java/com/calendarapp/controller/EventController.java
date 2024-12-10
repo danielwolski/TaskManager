@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calendarapp.model.Event;
 import com.calendarapp.rest.RestCreateEvent;
 import com.calendarapp.rest.RestEvent;
+import com.calendarapp.rest.RestEventDetails;
 import com.calendarapp.service.EventService;
 
 import lombok.AllArgsConstructor;
@@ -55,5 +55,10 @@ public class EventController {
     @GetMapping
     public ResponseEntity<List<RestEvent>> getAllEvents() {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(eventService.getAllEvents());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RestEventDetails> getEventDetails(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(eventService.getEventDetails(id));
     }
 }

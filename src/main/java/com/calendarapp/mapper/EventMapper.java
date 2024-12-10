@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 import com.calendarapp.model.Event;
 import com.calendarapp.rest.RestCreateEvent;
 import com.calendarapp.rest.RestEvent;
+import com.calendarapp.rest.RestEventDetails;
 
 @Mapper(componentModel = "spring")
 public interface EventMapper {
@@ -20,4 +21,6 @@ public interface EventMapper {
 
     List<Event> eventRestListToEventList(List<RestEvent> eventRestList);
     List<RestEvent> eventListToEventRestList(List<Event> eventList);
+    
+    RestEventDetails eventToEventDetails(Event eventDetails);
 }
