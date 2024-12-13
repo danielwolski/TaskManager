@@ -5,3 +5,9 @@ CREATE TABLE IF NOT EXISTS events (
     end_time TIMESTAMP NOT NULL,
     description VARCHAR(255) NULL
 );
+
+CREATE TABLE IF NOT EXISTS tasks (
+    id SERIAL PRIMARY KEY,
+    done BOOLEAN NOT NULL DEFAULT FALSE,
+    description VARCHAR(255) NOT NULL
+);
