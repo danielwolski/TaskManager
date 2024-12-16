@@ -2,7 +2,7 @@
 
 This repository contains the frontend for the CalendarApp application. Build using Angular, provides a user-friendly interface for managing events and tasks.
 
-<video controls src="FrontendPresentation.mp4" title="Title"></video>
+![](https://github.com/danielwolski/CalendarApp-Frontend/blob/main/FrontendPresentation.gif)
 
 # Installation and setup
 1. **Clone the repository:**
