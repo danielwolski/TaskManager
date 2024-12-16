@@ -18,7 +18,7 @@
 
 .green-button {
     margin-top: 20px;
-    margin-left: 60%;
+    margin-left: 70%;
     padding: 10px;
     background-color: rgb(75, 1, 248);
     color: white;
@@ -88,4 +88,11 @@
 
 .invalid-input {
   border: 2px solid red;
+}
+
+.no-objects-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #999;
+  font-style: italic;
 }

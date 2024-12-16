@@ -17,15 +17,39 @@
     font-size: 25px;
   }
 
-.events-table {
-    width: 800px;
-    overflow-x: auto;  
-    max-height: 50px;  
+.tasks-table {
+    width: 900px;
     border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
 }
 
-.events-table td button {
+.tasks-table td button {
     margin-right: -10px;
+}
+
+.tasks-table th,
+.tasks-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.tasks-table th:nth-child(1),
+.tasks-table td:nth-child(1) {
+  width: 5%;
+}
+.tasks-table th:nth-child(2),
+.tasks-table td:nth-child(2) {
+  width: 90%;
+}
+
+.tasks-table th:nth-child(3),
+.tasks-table td:nth-child(3) {
+  width: 5%;
 }
 
 .create-form {
