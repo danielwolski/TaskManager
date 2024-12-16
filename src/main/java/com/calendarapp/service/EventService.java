@@ -39,11 +39,6 @@ public class EventService {
         eventRepository.deleteById(id);
     }
 
-    public void updateEvent(RestEvent restEvent) {
-        Event event = eventMapper.eventRestToEvent(restEvent);
-        eventRepository.updateEvent(event);
-    }
-
     public RestEventDetails getEventDetails(Long id) {
         return eventMapper.eventToEventDetails(eventRepository.getEventDetails(id));
     }

@@ -47,13 +47,6 @@ public class EventController {
         eventService.deleteEvent(id);
         return ResponseEntity.ok().build();
     }
-
-    @PatchMapping
-    public ResponseEntity<Response> updateEvent(@RequestBody RestEvent restEvent) {
-        log.info("Received update event request {}", restEvent);
-        eventService.updateEvent(restEvent);
-        return ResponseEntity.ok().build();
-    }
     
     @GetMapping
     public ResponseEntity<List<RestEvent>> getAllEvents() {
