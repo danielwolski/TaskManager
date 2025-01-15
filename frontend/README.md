@@ -1,19 +1,18 @@
-# CalendarApp Frontend
+# TaskManager Frontend
 
-This repository contains the frontend for the CalendarApp application. Build using Angular, provides a user-friendly interface for managing events and tasks.
+This repository contains the frontend for the TaskManager application. Built using Angular, provides a user-friendly interface for managing events and tasks.
 
-![](https://github.com/danielwolski/CalendarApp-Frontend/blob/main/FrontendPresentation.gif)
 
 # Installation and setup
-1. **Clone the repository:**
-```bash
-git clone https://github.com/danielwolski/CalendarApp-Frontend.git
-```
-
-2. **Build and run the project:**
+1. **Build and run the project:**
 ```bash
 npm install
 npm start
+```
+
+2. **By default available under address:**
+```bash
+http://localhost:4200
 ```
 
 3. **Logging in - default credentials:**

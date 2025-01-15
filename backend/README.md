@@ -1,12 +1,7 @@
-# CalendarApp Backend
+# TaskManager Backend
 
-This repository contains the backend for the CalendarApp application, used to manage tasks and events. It's built using Java and Spring Boot.
+This repository contains the backend for the TaskManager application, used to manage tasks and events. It's built using Java and Spring Boot.
 
-# Stack
-* **Language:** Java
-* **Framework:** Spring Boot
-* **Database:** PostgreSQL
-* **Build tool:** Gradle
 
 # Local installation and setup
 
