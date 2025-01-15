@@ -9,11 +9,8 @@ This repository contains the backend for the CalendarApp application, used to ma
 * **Build tool:** Gradle
 
 # Local installation and setup
-1. **Clone the repository:**
-```bash
-git clone https://github.com/danielwolski/CalendarApp-Backend.git
-```
-2. **Start PostgreSQL in Docker:**
+
+1. **Start PostgreSQL in Docker:**
 
 To do it, PostgreSQL docker image is needed
 ```
@@ -29,7 +26,7 @@ image: bitnami/postgresql
 ```
 to your PostgreSQL docker image name.
 
-3. **Build and run the project:**
+2. **Build and run the project:**
 ```bash
  cd ..
 ./gradlew build
