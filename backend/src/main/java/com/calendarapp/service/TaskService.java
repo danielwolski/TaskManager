@@ -29,7 +29,7 @@ public class TaskService {
     }
 
     public List<RestTask> getAllTasks() {
-        return taskMapper.taskListToTaskRestList(taskRepository.getAll());
+        return taskMapper.taskListToTaskRestList(taskRepository.findAll());
     }
 
     public void deleteTask(Long id) {

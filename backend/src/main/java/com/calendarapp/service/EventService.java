@@ -32,7 +32,7 @@ public class EventService {
     }
 
     public List<RestEvent> getAllEvents() {
-        return eventMapper.eventListToEventRestList(eventRepository.getAll());
+        return eventMapper.eventListToEventRestList(eventRepository.findAll());
     }
 
     public void deleteEvent(Long id) {
@@ -40,11 +40,11 @@ public class EventService {
     }
 
     public RestEventDetails getEventDetails(Long id) {
-        return eventMapper.eventToEventDetails(eventRepository.getEventDetails(id));
+        return eventMapper.eventToEventDetails(eventRepository.getById(id));
     }
 
     public List<RestEventDetails> getEventDetailsByDay(LocalDate date) {
-        return eventMapper.eventListToRestEventDetailsList(eventRepository.getEventsByDay(date));
+        return eventMapper.eventListToRestEventDetailsList(eventRepository.getAllByStartTime(date));
     }
     
 }

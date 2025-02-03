@@ -32,7 +32,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody RestCreateTask restCreateTask) {
-        log.info("Received create task request {}", restCreateTask);
+        log.info("Received create task request {}", restCreateTask.getDescription());
         Task createdTask = taskService.createTask(restCreateTask);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(createdTask);
     }
