@@ -1,4 +1,4 @@
-package com.calendarapp.rest;
+package com.calendarapp.rest.event;
 
 import java.time.LocalDateTime;
 

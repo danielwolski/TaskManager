@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.calendarapp.model.Task;
-import com.calendarapp.rest.RestCreateTask;
-import com.calendarapp.rest.RestTask;
+import com.calendarapp.rest.task.RestCreateTask;
+import com.calendarapp.rest.task.RestTask;
 
 @Mapper(componentModel = "spring")
 public interface TaskMapper {

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import com.calendarapp.mapper.TaskMapper;
 import com.calendarapp.model.Task;
 import com.calendarapp.repository.TaskRepository;
-import com.calendarapp.rest.RestCreateTask;
+import com.calendarapp.rest.task.RestCreateTask;
 
-import com.calendarapp.rest.RestTask;
+import com.calendarapp.rest.task.RestTask;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

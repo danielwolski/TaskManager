@@ -6,9 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.calendarapp.model.Event;
-import com.calendarapp.rest.RestCreateEvent;
-import com.calendarapp.rest.RestEvent;
-import com.calendarapp.rest.RestEventDetails;
+import com.calendarapp.rest.event.RestCreateEvent;
+import com.calendarapp.rest.event.RestEvent;
+import com.calendarapp.rest.event.RestEventDetails;
 
 @Mapper(componentModel = "spring")
 public interface EventMapper {

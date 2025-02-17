@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import com.calendarapp.mapper.EventMapper;
 import com.calendarapp.model.Event;
 import com.calendarapp.repository.EventRepository;
-import com.calendarapp.rest.RestCreateEvent;
-import com.calendarapp.rest.RestEvent;
-import com.calendarapp.rest.RestEventDetails;
+import com.calendarapp.rest.event.RestCreateEvent;
+import com.calendarapp.rest.event.RestEvent;
+import com.calendarapp.rest.event.RestEventDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

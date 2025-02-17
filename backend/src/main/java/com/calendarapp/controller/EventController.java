@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calendarapp.model.Event;
-import com.calendarapp.rest.RestCreateEvent;
-import com.calendarapp.rest.RestEvent;
-import com.calendarapp.rest.RestEventDetails;
+import com.calendarapp.rest.event.RestCreateEvent;
+import com.calendarapp.rest.event.RestEvent;
+import com.calendarapp.rest.event.RestEventDetails;
 import com.calendarapp.service.EventService;
 
 import lombok.AllArgsConstructor;

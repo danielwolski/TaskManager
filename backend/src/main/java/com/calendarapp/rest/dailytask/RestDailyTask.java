@@ -1,11 +1,11 @@
-package com.calendarapp.rest.task;
+package com.calendarapp.rest.dailytask;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class RestTask {
+public class RestDailyTask {
     private Long id;
     private boolean done;
     private String description;

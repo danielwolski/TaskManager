@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calendarapp.model.Task;
-import com.calendarapp.rest.RestCreateTask;
-import com.calendarapp.rest.RestTask;
+import com.calendarapp.rest.task.RestCreateTask;
+import com.calendarapp.rest.task.RestTask;
 import com.calendarapp.service.TaskService;
 
 import lombok.AllArgsConstructor;
