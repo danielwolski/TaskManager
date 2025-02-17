@@ -1,6 +1,8 @@
 package com.calendarapp.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -44,7 +46,9 @@ public class EventService {
     }
 
     public List<RestEventDetails> getEventDetailsByDay(LocalDate date) {
-        return eventMapper.eventListToRestEventDetailsList(eventRepository.getAllByStartTime(date));
+        LocalDateTime startOfDay = date.atStartOfDay();
+        LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
+        return eventMapper.eventListToRestEventDetailsList(eventRepository.findAllByStartTimeBetween(startOfDay, endOfDay));
     }
     
 }

@@ -5,7 +5,7 @@ This repository contains frontend and backend for the TaskManager application, u
 # Stack
 * **Language:** Java
 * **Framework:** Spring Boot
-* **Database:** PostgreSQL, JDBC
+* **Database:** SQLite
 * **Build tool:** Gradle
 <br></br>
 * **Frontend:** Angular
