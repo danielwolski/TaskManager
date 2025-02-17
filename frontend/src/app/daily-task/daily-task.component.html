@@ -1,0 +1,43 @@
+<div  class="tasks">
+    <h2 class="header">Daily Tasks</h2>
+
+    <p *ngIf="dailyTasks.length === 0" class="no-objects-message">No daily tasks.</p>
+
+    <table class="tasks-table" *ngIf="dailyTasks.length > 0">
+      <tbody>
+        <tr *ngFor="let dailyTask of dailyTasks; let i = index">
+          <td>
+            <button class="delete-button" (click)="toggleIsDone(dailyTask.id)">
+              <span [ngClass]="dailyTask.done ? 'icon-task-done' : 'icon-task-not-done'"></span>
+            </button>
+          </td>
+          <td>{{ dailyTask.description }}</td>
+          <td>
+            <button class="delete-button" (click)="removeDailyTask(dailyTask.id)">
+              <span class="icon-trash"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form (ngSubmit)="confirmCreateDailyTask()" class="create-form" #dailyTaskForm="ngForm">
+      <input
+        id="description"
+        [(ngModel)]="dailyTaskRequest.description"
+        name="description"
+        placeholder="Add new daily task"
+        required
+      />
+      <div class="form-buttons">
+        <button
+          class="green-button"
+          type="submit"
+          [disabled]="dailyTaskForm.invalid"
+        >
+          Confirm
+        </button>
+      </div>
+    </form>    
+
+</div>

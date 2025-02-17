@@ -21,6 +21,10 @@ export class AppComponent {
     this.router.navigate(['/tasks']);
   }
 
+  goToDailyTask() {
+    this.router.navigate(['/daily-task']);
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
