@@ -53,6 +53,17 @@
     background-position: center;
 }
 
+.icon-daily-tasks {
+  background-image: url('assets/daily-task.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: center;
+}
+
 .icon-task-done {
   background-image: url('assets/task-done.png');
   background-size: contain;
