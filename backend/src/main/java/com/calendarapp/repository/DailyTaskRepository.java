@@ -4,6 +4,7 @@ import com.calendarapp.model.DailyTask;
 
 import jakarta.transaction.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,14 @@ public interface DailyTaskRepository extends JpaRepository<DailyTask, Long> {
     @Modifying
     @Query("UPDATE DailyTask t SET t.done = NOT t.done WHERE t.id = :id")
     void toggleIsDone(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE DailyTask t SET t.done = false")
+    void setAllIsDoneToFalse();
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE DailyTask t SET t.done = false WHERE t.currentDay <> :today")
+    void setIsDoneToFalseIfNecessary(LocalDate today);
 }
