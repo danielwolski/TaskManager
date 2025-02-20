@@ -24,11 +24,11 @@ public interface DailyTaskRepository extends JpaRepository<DailyTask, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE DailyTask t SET t.done = false")
-    void setAllIsDoneToFalse();
+    @Query("UPDATE DailyTask t SET t.done = false, t.currentDay = :today")
+    void setAllIsDoneToFalse(LocalDate today);
 
     @Transactional
     @Modifying
-    @Query("UPDATE DailyTask t SET t.done = false WHERE t.currentDay <> :today")
+    @Query("UPDATE DailyTask t SET t.done = false, t.currentDay = :today WHERE t.currentDay <> :today")
     void setIsDoneToFalseIfNecessary(LocalDate today);
 }

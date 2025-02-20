@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
@@ -30,9 +29,9 @@ public class DailyTaskResetter {
 
     @Scheduled(cron = "59 59 23 * * *")
     public void resetDailyTasksOnNextDay() {
-        LocalDateTime now = LocalDateTime.now();
-        log.info("Resetting daily tasks: " + now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        LocalDate today = LocalDate.now();
+        log.info("Resetting daily tasks: " + today.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
-        dailyTaskRepository.setAllIsDoneToFalse();
+        dailyTaskRepository.setAllIsDoneToFalse(today);
     }
 }
