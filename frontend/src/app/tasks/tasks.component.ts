@@ -12,7 +12,8 @@ import { TaskService } from '../services/task.service';
 })
 export class TasksComponent implements OnInit {
 
-  tasks: Task[] = [];
+  todoTasks: Task[] = [];
+  doneTasks: Task[] = [];
 
   taskRequest: CreateTaskRequest = {
     description: ''
@@ -39,7 +40,8 @@ export class TasksComponent implements OnInit {
 
   loadTasks(): void {
     this.taskService.getTasks().subscribe((data: Task[]) => {
-      this.tasks = data;
+      this.todoTasks = data.filter(task => !task.done);
+      this.doneTasks = data.filter(task => task.done);
     });
   }
   
@@ -60,5 +62,13 @@ export class TasksComponent implements OnInit {
     this.taskRequest = {
       description: ''
     };
-  }  
+  }
+  
+  isTasksListEmpty(): boolean {
+    return this.todoTasks.length === 0 && this.doneTasks.length === 0;
+  }
+
+  isTodoListEmpty(): boolean {
+    return this.todoTasks.length === 0;
+  }
 }
