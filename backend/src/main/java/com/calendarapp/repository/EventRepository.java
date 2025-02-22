@@ -5,6 +5,7 @@ import com.calendarapp.model.Event;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.calendarapp.model.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +21,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
                                           @Param("endOfDay") LocalDateTime endOfDay);
 
     List<Event> findAll();
+
+    @Query("SELECT e FROM Event e WHERE e.group = :group")
+    List<Event> findAllByGroup(Group group);
 }

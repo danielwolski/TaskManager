@@ -3,6 +3,7 @@ package com.calendarapp.service;
 import java.util.List;
 
 import com.calendarapp.mapper.DailyTaskMapper;
+import com.calendarapp.model.Group;
 import com.calendarapp.repository.DailyTaskRepository;
 import com.calendarapp.rest.dailytask.RestDailyTask;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,19 @@ import lombok.extern.slf4j.Slf4j;
 public class DailyTaskService {
     private final DailyTaskMapper dailyTaskMapper;
     private final DailyTaskRepository dailyTaskRepository;
+    private final UserService userService;
 
     public DailyTask createDailyTask(RestCreateDailyTask restDailyTask) {
         DailyTask dailyTask = dailyTaskMapper.restCreateDailyTaskToDailyTask(restDailyTask);
+        dailyTask.setGroup(userService.getCurrentUserGroup());
         DailyTask savedDailyTask = dailyTaskRepository.save(dailyTask);
         log.info("Daily task saved: {}", savedDailyTask);
         return savedDailyTask;
     }
 
-    public List<RestDailyTask> getAllTasks() {
-        return dailyTaskMapper.dailyTaskListToDailyTaskRestList(dailyTaskRepository.findAll());
+    public List<RestDailyTask> getAllTasksForGroup() {
+        Group currentUserGroup = userService.getCurrentUserGroup();
+        return dailyTaskMapper.dailyTaskListToDailyTaskRestList(dailyTaskRepository.findAllByGroup(currentUserGroup));
     }
 
     public void deleteTask(Long id) {

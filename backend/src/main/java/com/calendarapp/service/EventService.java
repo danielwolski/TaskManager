@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.calendarapp.model.Group;
 import org.springframework.stereotype.Service;
 
 import com.calendarapp.mapper.EventMapper;
@@ -24,17 +25,20 @@ public class EventService {
 
     private final EventMapper eventMapper;
     private final EventRepository eventRepository;
+    private final UserService userService;
 
     public Event createEvent(RestCreateEvent restEvent) {
         Event event = eventMapper.restCreateEventToEvent(restEvent);
+        event.setGroup(userService.getCurrentUserGroup());
         //validate(event)
         Event savedEvent = eventRepository.save(event);
         log.info("Event saved: {}", savedEvent);
         return savedEvent;
     }
 
-    public List<RestEvent> getAllEvents() {
-        return eventMapper.eventListToEventRestList(eventRepository.findAll());
+    public List<RestEvent> getAllEventsForGroup() {
+        Group currentUserGroup = userService.getCurrentUserGroup();
+        return eventMapper.eventListToEventRestList(eventRepository.findAllByGroup(currentUserGroup));
     }
 
     public void deleteEvent(Long id) {

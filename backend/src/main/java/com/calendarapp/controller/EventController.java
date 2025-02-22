@@ -48,8 +48,8 @@ public class EventController {
     }
     
     @GetMapping
-    public ResponseEntity<List<RestEvent>> getAllEvents() {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(eventService.getAllEvents());
+    public ResponseEntity<List<RestEvent>> getAllEventsForGroup() {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(eventService.getAllEventsForGroup());
     }
 
     @GetMapping("/{id}")

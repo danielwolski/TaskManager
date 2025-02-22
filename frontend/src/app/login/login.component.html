@@ -6,10 +6,10 @@
       </div>
       
       <input 
-        id="username" 
-        [(ngModel)]="username" 
-        name="username" 
-        placeholder="Username" 
+        id="email" 
+        [(ngModel)]="email" 
+        name="email" 
+        placeholder="Email" 
         required 
       />
 
@@ -24,6 +24,7 @@
 
       <div class="form-buttons">
         <button type="submit">Login</button>
+        <button (click)="goToRegister()">Go to Registration</button>
       </div>
 
     </form>
