@@ -8,8 +8,6 @@ import com.calendarapp.rest.dailytask.RestDailyTask;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.calendarapp.model.DailyTask;
-
 @Mapper(componentModel = "spring")
 public interface DailyTaskMapper {
 

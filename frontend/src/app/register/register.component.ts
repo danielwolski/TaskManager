@@ -5,29 +5,28 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
-  email = '';
+export class RegisterComponent {
+  username = '';
   password = '';
+  email = '';
+  groupPasscode = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
-    this.authService.login(this.email, this.password).subscribe({
+  onRegister() {
+    this.authService.register(this.username, this.password, this.email, this.groupPasscode).subscribe({
       next: response => {
-        this.authService.saveToken(response.access_token);
-        this.router.navigate(['/events-list']);
+        this.router.navigate(['/login']);
       },
       error: err => {
-        this.email = '';
-        this.password = '';
-        if (err.status === 500) {
-          this.errorMessage = 'Invalid credentials. Please try again.';
+        if (err.error && err.error.message) {
+          this.errorMessage = err.error.message;
         } else {
           this.errorMessage = 'An unexpected error occurred. Please try again later.';
         }
@@ -35,7 +34,7 @@ export class LoginComponent {
     });
   }
 
-  goToRegister() {
-    this.router.navigate(['/register']);
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }

@@ -1,5 +1,6 @@
 package com.calendarapp.repository;
 
+import com.calendarapp.model.Group;
 import com.calendarapp.model.Task;
 
 import jakarta.transaction.Transactional;
@@ -20,4 +21,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Modifying
     @Query("UPDATE Task t SET t.done = NOT t.done WHERE t.id = :id")
     void toggleIsDone(Long id);
+
+    @Query("SELECT t FROM Task t WHERE t.group = :group")
+    List<Task> findAllByGroup(Group group);
 }

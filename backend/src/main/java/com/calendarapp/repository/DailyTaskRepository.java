@@ -2,6 +2,7 @@ package com.calendarapp.repository;
 
 import com.calendarapp.model.DailyTask;
 
+import com.calendarapp.model.Group;
 import jakarta.transaction.Transactional;
 
 import java.time.LocalDate;
@@ -31,4 +32,7 @@ public interface DailyTaskRepository extends JpaRepository<DailyTask, Long> {
     @Modifying
     @Query("UPDATE DailyTask t SET t.done = false, t.currentDay = :today WHERE t.currentDay <> :today")
     void setIsDoneToFalseIfNecessary(LocalDate today);
+
+    @Query("SELECT t FROM DailyTask t WHERE t.group = :group")
+    List<DailyTask> findAllByGroup(Group group);
 }

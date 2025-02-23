@@ -44,8 +44,8 @@ public class DailyTaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RestDailyTask>> getAllDailyTasks() {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(dailyTaskService.getAllTasks());
+    public ResponseEntity<List<RestDailyTask>> getAllDailyTasksForGroup() {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(dailyTaskService.getAllTasksForGroup());
     }
 
     @PatchMapping("/{id}")
