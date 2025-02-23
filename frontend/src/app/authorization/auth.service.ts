@@ -32,13 +32,7 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
-  logout(): void {
-    localStorage.removeItem('jwtToken');
-
-    //TODO fix on backend side
-    // this.http.post(this.logoutUrl, {}).subscribe({
-    //   next: () => console.log('Logged out on the server'),
-    //   error: (err) => console.error('Server logout error:', err),
-    // });
+  logout(): Observable<any> {
+    return this.http.post(this.logoutUrl, {});
   }
 }
