@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { DailyTask, CreateDailyTaskRequest } from '../models/daily-task.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DailyTaskService {
-  private apiUrl = 'http://localhost:8080/api/daily-tasks';
+  private apiUrl = `${environment.apiUrl}/api/daily-tasks`;  
 
   private dailyTasksUpdatedSubject = new Subject<void>();
 
@@ -18,7 +19,6 @@ export class DailyTaskService {
   getDailyTasks(): Observable<DailyTask[]> {
     return this.http.get<DailyTask[]>(this.apiUrl);
   }
-
 
   addDailyTask(request: CreateDailyTaskRequest): Observable<DailyTask> {
     return this.http.post<DailyTask>(this.apiUrl, request).pipe(

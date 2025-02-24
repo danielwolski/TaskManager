@@ -4,8 +4,8 @@ services:
     image: bitnami/postgresql
     container_name: postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRESQL_USERNAME: admin
+      POSTGRESQL_PASSWORD: admin
       POSTGRES_DB: calendarapp
     ports:
       - "5432:5432"
