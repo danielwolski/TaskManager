@@ -43,7 +43,7 @@ public class AuthenticationService {
 
     User user = new User();
     user.setUsername(registerRequest.getUsername());
-    user.setEmail(registerRequest.getEmail());
+    user.setLogin(registerRequest.getLogin());
     user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
     user.setUserRole(UserRole.USER);
 
@@ -81,7 +81,7 @@ public class AuthenticationService {
               )
     );
 
-    var user = userRepository.findByEmail(request.getEmail())
+    var user = userRepository.findByLogin(request.getEmail())
         .orElseThrow();
     var jwtToken = jwtService.generateToken(user);
     var refreshToken = jwtService.generateRefreshToken(user);
@@ -90,6 +90,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
         .accessToken(jwtToken)
             .refreshToken(refreshToken)
+            .username(user.getTrueUsername())
         .build();
   }
 
@@ -129,7 +130,7 @@ public class AuthenticationService {
     userEmail = jwtService.extractUsername(refreshToken);
 
     if (userEmail != null) {
-      var user = this.userRepository.findByEmail(userEmail)
+      var user = this.userRepository.findByLogin(userEmail)
               .orElseThrow();
       if (jwtService.isTokenValid(refreshToken, user)) {
         var accessToken = jwtService.generateToken(user);

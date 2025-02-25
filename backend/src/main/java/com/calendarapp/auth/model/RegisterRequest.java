@@ -15,11 +15,11 @@ public class RegisterRequest {
 
     @NotNull
     @NotEmpty
-    private String password;
+    private String login;
 
     @NotNull
     @NotEmpty
-    private String email;
+    private String password;
 
     @NotNull
     @NotEmpty

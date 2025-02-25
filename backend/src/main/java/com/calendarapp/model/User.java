@@ -22,11 +22,11 @@ public class User implements UserDetails {
     @Column(unique = true, nullable = false)
     private String username;
 
+    @Column(unique = true, nullable = false)
+    private String login;
+
     @Column(nullable = false)
     private String password;
-
-    @Column(unique = true, nullable = false)
-    private String email;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -48,11 +48,15 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return login;
+    }
+
+    public String getTrueUsername() {
+        return username;
     }
 
     @Override
     public String toString() {
-        return this.email + " " + this.getGroup().getPasscode();
+        return this.username + " " + this.getGroup().getPasscode();
     }
 }

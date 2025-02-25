@@ -19,7 +19,7 @@ public class UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
-        User user = userRepository.findByEmail(email)
+        User user = userRepository.findByLogin(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         Group group = user.getGroup();
 

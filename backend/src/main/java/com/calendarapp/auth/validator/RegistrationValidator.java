@@ -1,7 +1,6 @@
 package com.calendarapp.auth.validator;
 
 import com.calendarapp.exception.EmailAlreadyExistsException;
-import com.calendarapp.exception.EmailWrongPatternException;
 import com.calendarapp.repository.UserRepository;
 import com.calendarapp.auth.model.RegisterRequest;
 import lombok.AllArgsConstructor;
@@ -13,12 +12,11 @@ public class RegistrationValidator {
 
     private final UserRepository userRepository;
 
-//    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
 
     public void validate(RegisterRequest registerRequest) {
          validateUsernameUniqueness(registerRequest.getUsername());
-         validateEmailUniqueness(registerRequest.getEmail());
-//         validateEmailPattern(registerRequest.getEmail());
+         validateLoginUniqueness(registerRequest.getLogin());
     }
 
     private void validateUsernameUniqueness(String username) {
@@ -27,15 +25,9 @@ public class RegistrationValidator {
         }
     }
 
-    private void validateEmailUniqueness(String email) {
-        if (userRepository.existsByEmail(email)) {
-            throw new EmailAlreadyExistsException("Login " + email + " is already in use");
+    private void validateLoginUniqueness(String login) {
+        if (userRepository.existsByLogin(login)) {
+            throw new EmailAlreadyExistsException("Login " + login + " is already in use");
         }
     }
-
-//    private void validateEmailPattern(String email) {
-//        if (!email.matches(EMAIL_PATTERN)) {
-//            throw new EmailWrongPatternException("Email " + email + " is incorrect");
-//        }
-//    }
 }
