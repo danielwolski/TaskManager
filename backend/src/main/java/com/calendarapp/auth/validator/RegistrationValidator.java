@@ -13,12 +13,12 @@ public class RegistrationValidator {
 
     private final UserRepository userRepository;
 
-    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
+//    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
 
     public void validate(RegisterRequest registerRequest) {
          validateUsernameUniqueness(registerRequest.getUsername());
          validateEmailUniqueness(registerRequest.getEmail());
-         validateEmailPattern(registerRequest.getEmail());
+//         validateEmailPattern(registerRequest.getEmail());
     }
 
     private void validateUsernameUniqueness(String username) {
@@ -29,13 +29,13 @@ public class RegistrationValidator {
 
     private void validateEmailUniqueness(String email) {
         if (userRepository.existsByEmail(email)) {
-            throw new EmailAlreadyExistsException("Email " + email + " is already in use");
+            throw new EmailAlreadyExistsException("Login " + email + " is already in use");
         }
     }
 
-    private void validateEmailPattern(String email) {
-        if (!email.matches(EMAIL_PATTERN)) {
-            throw new EmailWrongPatternException("Email " + email + " is incorrect");
-        }
-    }
+//    private void validateEmailPattern(String email) {
+//        if (!email.matches(EMAIL_PATTERN)) {
+//            throw new EmailWrongPatternException("Email " + email + " is incorrect");
+//        }
+//    }
 }
