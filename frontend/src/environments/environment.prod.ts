@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://'
+    apiUrl: 'https://grouptaskmanager-production.up.railway.app'
   };
