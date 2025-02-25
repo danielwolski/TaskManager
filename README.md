@@ -1,13 +1,42 @@
-# TaskManager
+<p align="center">
+  <img src="readmeassets/gtm.png">
 
-This repository contains frontend and backend for the TaskManager application, used to manage tasks and events. It's built using Java and Spring Boot with frontend in Angular.
+This repository contains frontend and backend for the GroupTaskManager application, used to manage tasks and events between members of a group. 
 
-# Stack
-* **Language:** Java
-* **Framework:** Spring Boot
+</p>
+
+
+# Main Stack
+* **Language:** Java 17
+* **Framework:** Spring Boot 3.4.0
 * **Database:** PostgreSQL
 * **Build tool:** Gradle
 <br></br>
 * **Frontend:** Angular
 
-![](https://github.com/danielwolski/TaskManager/blob/main/ApplicationPresentation.gif)
+
+# Backend Technologies
+
+* Spring Boot: Web, Security, Data JPA
+* ORM: Hibernate (via Spring Data JPA)
+* Security: Spring Security, JWT
+* Mapping: MapStruct 
+* Testing: JUnit
+
+# Using GTM
+Each user belongs to a group. Members of each group can see all events, tasks and daily tasks created by the users of the group.
+
+
+## Registering
+Create a new account. Use an existing group passcode to enter an existing group and share tasks and events with its members.
+If not, create your own group passcode and share it with other users to join your group!
+
+<p align="center">
+  <img src="readmeassets/img_3.png">
+
+   <img src="readmeassets/img.png">
+
+   <img src="readmeassets/img_1.png">
+    
+   <img src="readmeassets/img_2.png">
+</p>
