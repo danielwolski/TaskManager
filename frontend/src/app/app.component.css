@@ -7,13 +7,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 180px; 
-    background-color: rgb(238, 238, 238);
+    width: 181px; 
+    background-color: rgba(18, 51, 185, 0.993);
     height: 100%; 
 }
 
 .menu-item button {
-    background: rgb(238, 238, 238);
+    background: rgb(251, 251, 252);
     color: rgb(75, 1, 248);
     cursor: pointer;
     border: 1px solid #ddd;
@@ -23,15 +23,16 @@
     width: 173px;
     font-size: 18px;
     text-align: left;
-    margin-left: -40px;
+    margin-left: -36px;
   }
   
 .menu-item button:hover {
-    background: rgb(200, 200, 200);
+    background: rgb(63, 130, 253);
 }
 
 .menu-item button.active {
-    background: rgb(150, 150, 150);
+    background: rgba(87, 106, 180, 0.993);
+    color: white;
     font-weight: bold;
 }
   
@@ -39,8 +40,14 @@
     list-style-type: none;
     margin: 0;
 }
+
+.username-greeting {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-left: -36px;
+}
   
 .logout-menu {
     list-style-type: none;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
 }

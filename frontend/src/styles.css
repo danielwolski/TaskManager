@@ -31,6 +31,19 @@
     background-color: rgb(47, 0, 158);
   }
 
+.icon-gtm {
+    background-image: url('assets/gtm.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 181px;
+    height: 85px;
+    margin-left: -40px;
+    margin-top: -11px;
+    display: inline-block;
+    cursor: pointer;
+    background-position: center;
+}
+
 .icon-trash {
    background-image: url('assets/trash.png');
    background-size: contain;

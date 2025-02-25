@@ -15,8 +15,13 @@ export class AuthService {
     return this.http.post<any>(`${this.authApiUrl}/login`, { email, password });
   }
 
-  register(username: string, password: string, email: string, groupPasscode: string): Observable<any> {
-    return this.http.post<any>(`${this.authApiUrl}/register`, { username, password, email, groupPasscode });
+  register(username: string, login: string, password: string, groupPasscode: string): Observable<any> {
+    return this.http.post<any>(`${this.authApiUrl}/register`, { username, login, password, groupPasscode });
+  }
+
+  saveUsername(username: string): void {
+    console.log("Hello", username)
+    localStorage.setItem('username', username);
   }
 
   saveToken(token: string): void {
@@ -32,6 +37,8 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
+    localStorage.removeItem('username')
+    localStorage.removeItem('jwtToken')
     return this.http.post(`${this.authApiUrl}/logout`, {});
   }
 }

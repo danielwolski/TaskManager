@@ -12,15 +12,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent {
   username = '';
+  login = '';
   password = '';
-  email = '';
   groupPasscode = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegister() {
-    this.authService.register(this.username, this.password, this.email, this.groupPasscode).subscribe({
+    this.authService.register(this.username, this.login, this.password, this.groupPasscode).subscribe({
       next: response => {
         this.router.navigate(['/login']);
       },
