@@ -1,6 +1,8 @@
 <p align="center">
   <img src="readmeassets/gtm.png">
 
+Try it out here (requires simple registration): https://group-task-manager.up.railway.app 
+
 This repository contains frontend and backend for the GroupTaskManager application, used to manage tasks and events between members of a group. 
 
 </p>
@@ -18,7 +20,7 @@ This repository contains frontend and backend for the GroupTaskManager applicati
 # Backend Technologies
 
 * Spring Boot: Web, Security, Data JPA
-* ORM: Hibernate (via Spring Data JPA)
+* ORM: Hibernate
 * Security: Spring Security, JWT
 * Mapping: MapStruct 
 * Testing: JUnit
